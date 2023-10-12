@@ -15,7 +15,7 @@ export default class QuickUnion {
         return i;
     }
 
-    public connected(p: number, q: number): boolean{
+    public connected(p: number, q: number): boolean {
         return this.root(p) == this.root(q);
     }
 

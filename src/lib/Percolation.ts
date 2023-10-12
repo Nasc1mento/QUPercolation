@@ -21,14 +21,18 @@ export default class Percolation {
 
     public open(row: number, col: number): void {
         if (this.is_open(row, col)) return;
+        console.log("cheguei aqui open");
+
         this.opened[this.xy_to_2d(row, col)] = true;
         this.counter_opened++;
+
         if (row == 0) {
             this.qu.union(this.xy_to_2d(row, col), this.virtual_top);
         }
         if (row == this.size-1) {
             this.qu.union(this.xy_to_2d(row, col), this.virtual_bottom);
         }
+        
         if (row > 0 && this.is_open(row-1, col)) {
             this.qu.union(this.xy_to_2d(row, col), this.xy_to_2d(row-1, col));
         }
@@ -52,12 +56,18 @@ export default class Percolation {
     }
 
     public xy_to_2d(row: number, col: number): number {
-        return row*(this.size+col);
+        return (row)*this.size+col;
     }
 
     public percolates(): boolean {
         return this.qu.connected(this.virtual_bottom, this.virtual_top);
     }
 
+    public get_opened(): boolean[] {
+        return this.opened;
+    }
 
+    public get_size(): number {
+        return this.size;
+    }
 }

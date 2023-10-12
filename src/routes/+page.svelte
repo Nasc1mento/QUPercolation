@@ -37,12 +37,22 @@
 {#if percolates}
     <h2>Percolates</h2>
 {:else}
-    <h2>Does not percolate yet</h2>
+    <h2>Does not percolate</h2>
 {/if}
 
 <style>
+    div {
+        display: flex;
+        justify-content: center;
+    }
+
+   h1, h2 {
+        color: aliceblue;
+        text-align: center;
+   }
+
     table {
-        border-collapse: collapse;
+        border-collapse: collapse; 
     }
 
     td {

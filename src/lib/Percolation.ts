@@ -66,10 +66,6 @@ export default class Percolation {
         return this.opened;
     }
 
-    public get_size(): number {
-        return this.size;
-    }
-
     public clear(): void {
         this.qu = new QuickUnion(this.size*this.size+2);
         this.opened = new Array(this.size*this.size).fill(false);

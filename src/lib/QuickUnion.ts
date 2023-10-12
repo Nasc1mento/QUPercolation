@@ -1,17 +1,17 @@
 export default class QuickUnion {
 
-    private vector: number[] = [];
+    private ids: number[] = [];
     private size: number[] = [];
 
     constructor(private id: number) {
         for(let i = 0; i < id; i++) {
-            this.vector[i] = i;
+            this.ids[i] = i;
             this.size[i] = 1;
         }
     }
 
     private root(i: number): number {
-        while(i != this.vector[i]) { i = this.vector[i] }
+        while(i != this.ids[i]) { i = this.ids[i] }
         return i;
     }
 
@@ -24,10 +24,10 @@ export default class QuickUnion {
         let j: number = this.root(q);
         
         if (this.size[i] < this.size[j]) {
-            this.vector[i] = j;
+            this.ids[i] = j;
             this.size[j] += this.size[i];
         } else {
-            this.vector[j] = i;
+            this.ids[j] = i;
             this.size[i] += this.size[j];
         }
     }

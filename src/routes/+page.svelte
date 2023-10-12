@@ -2,9 +2,10 @@
     import Percolation from "$lib/Percolation";
 
     const size: number = 7;
-    const percolation: Percolation = new Percolation(size);    
+    const percolation: Percolation = new Percolation(size);
     let opened: boolean[] = percolation.get_opened();
     let percolates: boolean = false;
+    let running: boolean = false;
 
     function open(row: number, col: number) {
         console.log(`Opening cell (${row}, ${col})`);
@@ -26,12 +27,14 @@
         cells.splice(randomIndex, 1);     
     }
 
-    function autoFill() {
+    function auto_fill() {
         const interval = setInterval(() => {
             if (percolates) {
+                running = false;
                 clearInterval(interval);
                 return;
             }
+            running = true;
             openRandom();
         }, 100);
     }
@@ -41,10 +44,11 @@
         opened = percolation.get_opened();
         percolates = false;
     }
-
 </script>
 
-<h1>Quick-Union Percolation</h1>
+<div>
+    <h1>Quick-Union Percolation</h1>
+</div>
 
 <div>
     <table>      
@@ -66,7 +70,7 @@
 
 <div>
     <div class="auto-fill">
-        <button on:click={() => autoFill()}>Auto fill</button>
+        <button on:click={() => auto_fill()} disabled={running}>Auto fill</button>
     </div>
     <div class="reset">
         <button on:click={() => reset()}>Reset</button>
@@ -79,8 +83,8 @@
     <h2>Does not percolate</h2>
 {/if}
 
-<div>
-    <p class="description">
+<div class="description">
+    <p >
     This is a visualization of the Quick-Union Percolation algorithm. 
     Click on the closed cells to open them. 
     The algorithm will determine if the system percolates or not.
@@ -136,15 +140,15 @@
     }
 
     .source-code {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    background: white;
-    padding: 10px;
-    color: #1a1a40;
-}
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        background: white;
+        padding: 10px;
+        color: #1a1a40;
+    }
 
     button {
         background-color: white;
@@ -158,6 +162,18 @@
         color: #1a1a40;
         justify-content: center;
         margin-top: 5px;
+    }
+
+    button:active {
+        background-color: #b0cbff;
+    }
+
+    button:hover {
+        background-color: #b0cbff;
+    }
+
+    button:disabled {
+        background-color: #61b0b7;
     }
 
     .auto-fill {

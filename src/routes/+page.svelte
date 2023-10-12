@@ -40,6 +40,17 @@
     <h2>Does not percolate</h2>
 {/if}
 
+<p class="description">
+    This is a visualization of the Quick-Union Percolation algorithm. 
+    Click on the closed cells to open them. 
+    The algorithm will determine if the system percolates or not.
+</p>
+
+<div class="source-code">
+    <a  href="https://github.com/Nasc1mento/QUPercolation"><i class="fab fa-github"></i> Code</a>
+</div>
+
+
 <style>
     div {
         display: flex;
@@ -69,4 +80,22 @@
     .closed {
         background-color: #ff0000;
     }
+
+    .description {
+        color: aliceblue;
+        text-align: center;
+        width: 50%;
+        margin: auto;
+    }
+
+    .source-code {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background: white; /* Optional: Add a background color for better visibility */
+    padding: 10px; /* Optional: Add some padding for better presentation */
+    color: #1a1a40;
+}
 </style>

@@ -85,7 +85,7 @@
 
 <div class="description">
     <p >
-    This is a visualization of the Quick-Union Percolation algorithm. 
+    This is a visualization of the Quick-Union algorithm. 
     Click on the closed cells to open them. 
     The algorithm will determine if the system percolates or not.
     </p>
